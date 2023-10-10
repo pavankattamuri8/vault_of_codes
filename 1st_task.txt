@@ -1,0 +1,84 @@
+1)Explanation:-The issue is in the reverse_string function where it is returning reversed, as reversed is an inbuilt function and it cannot be returned as a string.
+corrected_code:-
+def reverse_string(s):
+    reversed_string= ""
+    for i in range(len(s) - 1, -1, -1):
+        reversed_string+= s[i]
+    return reversed_string
+def main():
+    input_string = "Hello, world!"
+    reversed_string = reverse_string(input_string)
+    print(f"Reversed string: {reversed_string}")
+if __name__ == "__main__":
+    main()
+2) Explanation: The issue is with comparing a string with a number, as we cannot compare a string with a number.
+corrected code:-
+def get_age():
+    age = input("Please enter your age: ")
+    if age.isnumeric():
+        Str_age=int(age)
+        if(Str_age>18):
+            return int(age)
+        else:
+            return None
+def main():
+    age = get_age()
+    if age:
+        print(f"You are {age} years old and eligible.")
+    else:
+        print("Invalid input. You must be at least 18 years old.")
+if __name__ == "__main__":
+    main()
+
+3)Explanation: To fix this issue, you should first read the content of the file and store it in a variable, close the file, and then open it in write mode to write the modified content.
+Corrected code:
+def read_and_write_file(filename):
+    try:
+        with open(filename, 'r') as file:
+            content = file.read()
+        
+        with open(filename, 'w') as file:
+            file.write(content.upper())
+        
+        print(f"File '{filename}' processed successfully.")
+    except Exception as e:
+        print(f"An error occurred: {str(e)}")
+
+def main():
+    filename = "sample.txt"
+    read_and_write_file(filename)
+
+if __name__ == "__main__":
+    main()
+4)Explanation: The issue is  it's not returning the sorted array.
+corrected code:-
+def merge_sort(arr):
+    if len(arr) <= 1:
+        return arr
+    mid = len(arr) // 2
+    left = arr[:mid]
+    right = arr[mid:]
+    merge_sort(left)
+    merge_sort(right)
+    i=j=k=0
+    while i<len(left) and j<len(right):
+        if left[i]<right[j]:
+            arr[k] = left[i]
+            i += 1
+        else:
+            arr[k]=right[j]
+            j+=1
+        k+=1
+    while i<len(left):
+        arr[k]=left[i]
+        i+=1
+        k+=1
+    while j<len(right):
+        arr[k]=right[j]
+        j+=1
+        k+=1
+    return arr  #returning the array
+arr = [38, 27, 43, 3, 9, 82, 10]
+sorted_arr = merge_sort(arr)  
+print(f"The sorted array is: {sorted_arr}")  
+
